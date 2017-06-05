@@ -37,7 +37,6 @@ def compute_ranks(graph):
         for page in graph:
             const_factor = (1 - d) / npages
             sum_factor = 0.0
-            # Insert Code Here
             for incoming in in_link[page]:
                 sum_factor = sum_factor + (ranks[incoming] / len(graph[incoming]))
             sum = sum_factor * d
@@ -55,19 +54,11 @@ def union_of(list1, list2):
 
 def get_page(url):
     # Experimental
-    # print('Current Page opening : ', url)
     try:
         return str(urllib.request.urlopen(url).read())
     except:
         print('Empty String')
         return ''
-
-        # def get_page(url) :
-        # To get the source code of the url in string format.
-        # url is a string.
-        # page = open(url, 'rU')
-        # source_code = page.read()
-        # return source_code
 
 
 def get_links(seed):
@@ -131,10 +122,7 @@ def crawl(seed):
     )
     while to_be_crawled:
         current_page = to_be_crawled.pop()
-        # current_page is url
-        # print('Crawling over ', current_page)
         if current_page not in pages_to_crawl:
-            # print('Oops!! Hit a wrong page while crawling. Skipping Over')
             continue
         if current_page not in crawled:
             contents = get_page(current_page)  # Storing the contents of the page
